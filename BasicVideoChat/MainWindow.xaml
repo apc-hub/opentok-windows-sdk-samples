@@ -8,9 +8,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="960" Width="640">
     <Grid>
-        <OpenTok:VideoRenderer x:Name="PublisherVideo" HorizontalAlignment="Center" Height="480" VerticalAlignment="Top" Width="640">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22"/>
+            <RowDefinition Height="480"/>
+            <RowDefinition Height="480"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Content="Cliquer ici une fois." HorizontalAlignment="Left" VerticalAlignment="Top" Width="191" Click="Button_Click"/>
+        <OpenTok:VideoRenderer Grid.Row="1" x:Name="PublisherVideo" HorizontalAlignment="Center" Height="480" VerticalAlignment="Top" Width="640">
         </OpenTok:VideoRenderer>
-        <OpenTok:VideoRenderer x:Name="SubscriberVideo" HorizontalAlignment="Center" Height="480" VerticalAlignment="Bottom" Width="640">
+        <OpenTok:VideoRenderer Grid.Row="2" x:Name="SubscriberVideo" HorizontalAlignment="Center" Height="480" VerticalAlignment="Bottom" Width="640">
         </OpenTok:VideoRenderer>
     </Grid>
 </Window>

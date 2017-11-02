@@ -16,15 +16,6 @@ namespace BasicVideoChat
         public MainWindow()
         {
             InitializeComponent();
-
-            Publisher = new Publisher(Context.Instance, renderer: PublisherVideo);
-
-            Session = new Session(Context.Instance, API_KEY, SESSION_ID);
-            Session.Connected += Session_Connected;
-            Session.Disconnected += Session_Disconnected;
-            Session.Error += Session_Error;
-            Session.StreamReceived += Session_StreamReceived;
-            Session.Connect(TOKEN);
         }
 
         private void Session_Connected(object sender, System.EventArgs e)
@@ -46,6 +37,18 @@ namespace BasicVideoChat
         {
             Subscriber subscriber = new Subscriber(Context.Instance, e.Stream, SubscriberVideo);
             Session.Subscribe(subscriber);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Publisher = new Publisher(Context.Instance, renderer: PublisherVideo);
+
+            Session = new Session(Context.Instance, API_KEY, SESSION_ID);
+            Session.Connected += Session_Connected;
+            Session.Disconnected += Session_Disconnected;
+            Session.Error += Session_Error;
+            Session.StreamReceived += Session_StreamReceived;
+            Session.Connect(TOKEN);
         }
     }
 }
