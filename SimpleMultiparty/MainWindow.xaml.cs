@@ -169,7 +169,12 @@ namespace SimpleMultiparty
                 Trace.WriteLine("Connecting session");
                 try
                 {
+                    Trace.WriteLine("Starting session connect");
+                    Stopwatch sw = new Stopwatch();
+                    sw.Start();
                     Session.Connect(TOKEN);
+                    sw.Stop();
+                    Trace.WriteLine("End session connect. Duration: " + sw.ElapsedMilliseconds);
                 }
                 catch (OpenTokException ex)
                 {
