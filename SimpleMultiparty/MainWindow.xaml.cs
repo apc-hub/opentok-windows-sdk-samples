@@ -157,7 +157,12 @@ namespace SimpleMultiparty
                 try
                 {
                     Session.Unpublish(Publisher);
+                    Stopwatch sw = new Stopwatch();
+                    Trace.WriteLine("Starting session disconnect at " + DateTime.UtcNow.ToString("O"));
+                    sw.Start();
                     Session.Disconnect();
+                    sw.Stop();
+                    Trace.WriteLine("End session disconnect at " + DateTime.UtcNow.ToString("O") + ". Duration: " + sw.ElapsedMilliseconds);
                 }
                 catch (OpenTokException ex)
                 {
